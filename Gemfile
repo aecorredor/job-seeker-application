@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'turbolinks'               
 gem 'jbuilder'                
 gem 'sdoc',                     '0.4.0', group: :doc
+gem 'pg'   
 
 group :development, :test do
   gem 'sqlite3',              '1.3.9'
@@ -23,8 +24,7 @@ group :development, :test do
   gem 'spring',               '1.1.3'
 end
 
-group :production do
-  gem 'pg'          
+group :production do       
   gem 'rails_12factor'     
   gem 'puma'              
 end
