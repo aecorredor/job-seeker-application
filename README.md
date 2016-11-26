@@ -3,7 +3,10 @@ No migrations yet done
 
 
 
+add_reference :employer, :job_posting, index: true, foreign_key: true
 
+    add_reference :seeker, :job_application, index: true, foreign_key: true
+    add_reference :job_posting, :job_application, index: true, foreign_key: true   
 
 
 

@@ -6,9 +6,8 @@ class CreateJobPostings < ActiveRecord::Migration
       t.string :job_type
       t.text :job_description
       t.float :pay
-      add_reference :employer, :job_posting, index: true, foreign_key: true
-
       t.timestamps null: false
     end
+
   end
 end
