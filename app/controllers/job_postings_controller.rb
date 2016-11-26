@@ -1,4 +1,4 @@
-class JobApplicationController < ApplicationController
+class JobPostingsController < ApplicationController
   def create
   end
 

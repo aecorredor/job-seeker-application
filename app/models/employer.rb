@@ -12,4 +12,6 @@ class Employer < ActiveRecord::Base
                       uniqueness: { case_sensitive: false }
     validates :phone, presence: true, length: { minimum: 10, maximum: 10 }
     validates :address, presence: true, length: { maximum: 255 }
+    
+    has_secure_password
 end

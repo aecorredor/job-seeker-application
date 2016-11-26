@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   root      'pages#home'
   
-  resources :job_postings
-  resources :job_application
+  get 'signup' => 'pages#signup' #pages does not use crud therefore the routes need to be added here
+
+  resources :job_applications
   resources :admins
   resources :employers
   resources :seekers

@@ -1,12 +1,8 @@
 
-No migrations yet done
 
+http://stackoverflow.com/questions/30221519/cookies-in-ruby-on-rails-login-in-different-browsers
 
-
-add_reference :employer, :job_posting, index: true, foreign_key: true
-
-    add_reference :seeker, :job_application, index: true, foreign_key: true
-    add_reference :job_posting, :job_application, index: true, foreign_key: true   
+https://job-seeking-site-helsing.c9users.io
 
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126064836) do
+ActiveRecord::Schema.define(version: 20161126210223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 20161126064836) do
     t.string   "phone"
     t.string   "address"
     t.text     "information"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest"
   end
 
   create_table "employers", force: :cascade do |t|
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20161126064836) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "job_postings_id"
+    t.string   "password_digest"
   end
 
   add_index "employers", ["job_postings_id"], name: "index_employers_on_job_postings_id", using: :btree
@@ -69,9 +71,27 @@ ActiveRecord::Schema.define(version: 20161126064836) do
     t.string   "phone"
     t.string   "address"
     t.text     "interests"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "job_applications_id"
+    t.text     "about"
+    t.string   "major"
+    t.string   "work_experience1_title"
+    t.string   "work_experience2_title"
+    t.string   "work_experience3_title"
+    t.string   "work_experience1_company"
+    t.string   "work_experience2_company"
+    t.string   "work_experience3_company"
+    t.date     "work_experience1_start"
+    t.date     "work_experience2_start"
+    t.date     "work_experience3_start"
+    t.date     "work_experience1_end"
+    t.date     "work_experience2_end"
+    t.date     "work_experience3_end"
+    t.text     "work_experience1_description"
+    t.text     "work_experience2_description"
+    t.text     "work_experience3_description"
+    t.string   "password_digest"
   end
 
   add_index "seekers", ["job_applications_id"], name: "index_seekers_on_job_applications_id", using: :btree

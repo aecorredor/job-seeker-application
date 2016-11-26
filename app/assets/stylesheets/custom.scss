@@ -1,0 +1,68 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+// HOME PAGE
+
+.navigation-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    .logo {
+        color: #12F500;
+        font-size: 1.5em;
+        margin-left: 2%;
+        text-decoration: none;
+    }
+}
+
+.home-container {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .sourcer-title {
+        color: #12F500;
+    }
+    
+    h3 {
+        font-weight: 300;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    
+    .login-button {
+        margin-right: 30px;
+    }
+}
+
+// GENERAL SIGNUP PAGE
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 20%;
+    
+    h1 {
+        margin-bottom: 30px;
+    }
+    
+    .find-job-button {
+        margin-right: 30px;
+    }
+}
+
+// SEEKER SIGNUP
+

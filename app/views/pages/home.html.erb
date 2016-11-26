@@ -1,1 +1,9 @@
-k it works
+<% provide(:title, "Home") %>
+<div class="home-container">
+    <h1>Welcome to <span class="sourcer-title">Sourcer</span></h1>
+    <h3>Finding the source of all your dreams.</h3>
+    <div>
+        <%= link_to "Log in", '#', class: "btn btn-default login-button" %>
+        <%= link_to "Sign up", signup_path, class: "btn btn-default signup-button" %>
+    </div>
+</div>
