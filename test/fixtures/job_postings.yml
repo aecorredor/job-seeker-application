@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  position: MyString
+  lcoation: MyString
+  job_type: MyString
+  job_description: MyText
+  pay: 1.5
+
+two:
+  position: MyString
+  lcoation: MyString
+  job_type: MyString
+  job_description: MyText
+  pay: 1.5
