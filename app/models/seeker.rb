@@ -10,8 +10,8 @@ class Seeker < ActiveRecord::Base
                       length: { maximum: 255 },
                       format: { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
-    validates :phone, presence: true, length: { minimum: 10, maximum: 10 }
-    validates :address, presence: true, length: { maximum: 255 }
+    validates :phone, length: { maximum: 10 }
+    validates :address, length: { maximum: 255 }
     
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }

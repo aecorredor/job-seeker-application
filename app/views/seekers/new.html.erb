@@ -1,1 +1,31 @@
-<h1>create seeker</h1>
+<% provide(:title, 'Looking For Jobs') %>
+
+<div class="seeker-signup">
+    <%= render 'shared/seeker_error_messages' %>
+    <div class="form-container">
+        <h2 class="form-title">Sign up</h2>
+        
+        <div class="seeker-signup-form">
+            <%= form_for(@seeker) do |f| %>
+                <%= f.label :first_name, "First Name:" %>
+                <%= f.text_field :first_name, class: 'form-control' %>
+                
+                <%= f.label :last_name, "Last Name:" %>
+                <%= f.text_field :last_name, class: 'form-control' %>
+                
+                <%= f.label :email, "Email:" %>
+                <%= f.email_field :email, class: 'form-control' %>
+                
+                <%= f.label :password, "Password:" %>
+                <%= f.password_field :password, class: 'form-control' %>
+                
+                <%= f.label :password_confirmation, "Confirm Password:" %>
+                <%= f.password_field :password_confirmation, class: 'form-control' %>
+            
+                <%= f.submit "Create Account", class: "btn btn-success signup-button" %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+    

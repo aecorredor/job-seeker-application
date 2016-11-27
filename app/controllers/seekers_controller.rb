@@ -2,13 +2,12 @@ class SeekersController < ApplicationController
   
   def new
     @seeker = Seeker.new
-    
   end 
   
   def create
     @seeker = Seeker.new seeker_params
     if @seeker.save
-      flash[:success] = "Account Created"
+      flash[:success] = "Account Created Successfully! You can now log in."
       redirect_to root_url
     else
       render 'new'
@@ -46,7 +45,7 @@ class SeekersController < ApplicationController
   private
   
     def seeker_params
-      params.require(:seeker).permit(:first_name, :last_name, :email, :phone, :address, :interests, 
+      params.require(:seeker).permit(:first_name, :last_name, :email, :phone, :address, :interests, :password, :password_confirmation, 
         :about, :major, :work_experience1_title, :work_experience2_title, :work_experience3_title, 
         :work_experience1_company, :work_experience2_company, :work_experience3_company, :work_experience1_start,
         :work_experience2_start, :work_experience3_start, :work_experience1_end, :work_experience2_end, :work_experience3_end,

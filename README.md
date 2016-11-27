@@ -1,7 +1,3 @@
-
-
-http://stackoverflow.com/questions/30221519/cookies-in-ruby-on-rails-login-in-different-browsers
-
 https://job-seeking-site-helsing.c9users.io
 
 

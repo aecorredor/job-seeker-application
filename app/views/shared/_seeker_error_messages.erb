@@ -1,0 +1,12 @@
+<% if @seeker.errors.any? %>
+    <div class="error_explanation">
+        <div class="alert alert-danger">
+            The form contains <%= pluralize(@seeker.errors.count, "error") %>.
+        </div>
+        <ul>
+            <% @seeker.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
