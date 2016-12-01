@@ -6,8 +6,8 @@
         
         <div class="signup-form">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                <%= f.label :email, "First Name:" %>
-                <%= f.text_field :email, class: 'form-control', autofocus: true %>
+                <%= f.label :email, "Email:" %>
+                <%= f.email_field :email, class: 'form-control', autofocus: true %>
                 
                 <%= f.label :password, "Password:" %>
                 <%= f.password_field :password, class: 'form-control', autocomplete: 'off' %>
