@@ -1,0 +1,34 @@
+<% provide(:title, 'Post New Job') %>
+
+<div class="new-job-posting">
+    <%= render 'shared/job_posting_error_messages' %>
+    <div class="form-container">
+        <h2 class="form-title">Create new Job Posting</h2>
+        
+        <div class="job-posting-form">
+            <%= form_for(@job_posting) do |f| %>
+                <%= f.label :position, "Position:" %>
+                <%= f.text_field :position, class: 'form-control' %>
+                
+                <%= f.label :location, "Location:" %>
+                <%= f.text_field :location, class: 'form-control' %>
+                
+                <%= f.label :job_type, "Job Type:" %>
+                <%= f.text_field :job_type, class: 'form-control' %>
+                
+                <%= f.label :pay, "Salary:" %>
+                <%= f.number_field :pay, class: 'form-control' %>
+                
+                <%= f.label :job_description, "Job Description:" %>
+                <%= f.text_area :job_description, class: 'form-control' %>
+                
+                <div class="buttons">
+                    <%= link_to "Cancel", employerdashboard_path, class: "btn btn-default" %>
+                    <%= f.submit "Post Job", class: "btn btn-success signup-button" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+    

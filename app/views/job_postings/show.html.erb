@@ -1,2 +1,44 @@
-<h1>JobPosting#show</h1>
-<p>Find me in app/views/job_posting/show.html.erb</p>
+<% provide(:title, "View Applicants") %>
+<% @employer = Employer.find(@job_posting.employer_id) %>
+
+<div class="apply-for-job-container">
+    <div class="job-header-container">
+        <div class="company-info-container">
+            <h1 class="company-name"><%= @employer.company_name %></h1>
+            <div class="company-logo">
+                <%= gravatar_for @employer %>
+            </div>
+        </div>
+        
+        <div class="job-main-info-container">
+            <h1 class="job-posting-title"><%= @job_posting.position %></h1>
+            <h4 class="job-posting-location"><%= @job_posting.location %></h4>
+            <div class="btn job-type"><%= @job_posting.job_type.upcase %></div>
+        </div>
+    </div>
+    
+    <h1 class="people-applied">People that applied to this position:</h1>
+ 
+    <div class="all-container">
+        <% @job_applications.each_with_index do |job_application, index| %>
+            <% @seeker = Seeker.find(job_application.seeker_id) %>
+            <div class=<%= "index-item-#{index % 2}" %>>
+                <div class="item-name">
+                    <%= "#{@seeker.first_name} #{@seeker.last_name}" %>
+                </div>
+                
+                <div class="item-id">
+                    <%= @seeker.major %>
+                </div>
+                
+                <div class="item-id">
+                    <%= @seeker.university %>
+                </div>
+                
+                <div class="item-edit-link">
+                    <%= link_to "View Profile", seeker_path(@seeker), class: "btn btn-default" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

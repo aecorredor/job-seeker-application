@@ -1,2 +1,41 @@
-<h1>Admin#edit</h1>
-<p>Find me in app/views/admin/edit.html.erb</p>
+<% provide(:title, "Edit Admin Profile") %>
+
+<div class="seeker-dashboard-container">
+    <div class="seeker-left-nav">
+        <div class="seeker-image">
+            <%= gravatar_for @admin %>
+        </div>
+        
+        <%= link_to "Change Picture", 'https://en.gravatar.com/emails', target: '_blank', class: "btn btn-default edit-seeker-button" %>
+    </div>
+    
+    <div class="update-seeker update-employer">
+        <div class="seeker-update-errors">
+            <%= render 'shared/admin_error_messages' %>
+        </div>
+        <div class="form-container admin-dashboard">
+            <div class="update-seeker-form">
+                <%= form_for(@admin) do |f| %>
+                    <%= f.label :first_name, "Admin First Name:" %>
+                    <%= f.text_field :first_name, class: 'form-control', autofocus: true, class: "text-field" %>
+                    
+                    <%= f.label :email, "Email:" %>
+                    <%= f.email_field :email, class: 'form-control', autofocus: true, class: "text-field" %>
+                    
+                    <%= f.label :phone, "Phone:" %>
+                    <%= f.text_field :phone, class: 'form-control', autofocus: true, class: "text-field" %>
+                    
+                    <%= f.label :information, "Admin Info:" %>
+                    <%= f.text_area :information, class: 'form-control', autocomplete: 'off', class: "text-area"%>
+                    
+                    <div class="bottom-buttons">
+                        <%= link_to "Cancel", admindashboard_path, class: "btn btn-warning cancel-button" %>
+                        <%= f.submit "Save Profile", class: "btn btn-success save-profile-button" %>
+                    </div>
+                    
+                    <%= link_to "Change Password", edit_admin_registration_path, class: "btn btn-default change-password-button" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

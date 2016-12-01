@@ -1,2 +1,56 @@
-<h1>Employer#edit</h1>
-<p>Find me in app/views/employer/edit.html.erb</p>
+<% provide(:title, "Edit Profile") %>
+
+<div class="seeker-dashboard-container">
+    <div class="seeker-left-nav">
+        <div class="seeker-image">
+            <%= gravatar_for @employer %>
+        </div>
+        
+        <%= link_to "Change Picture", 'https://en.gravatar.com/emails', target: '_blank', class: "btn btn-default edit-seeker-button" %>
+        <% if admin_signed_in? %>
+            <%= link_to "Delete Employer", employer_path, :method => :delete, class: "btn btn-danger" %>
+        <% end %>
+    </div>
+    
+    <div class="update-seeker update-employer">
+        <div class="seeker-update-errors">
+            <%= render 'shared/employer_error_messages' %>
+        </div>
+        <div class="form-container">
+            <div class="update-seeker-form">
+                <%= form_for(@employer) do |f| %>
+                    <%= f.label :company_name, "Company Name:" %>
+                    <%= f.text_field :company_name, class: 'form-control', autofocus: true, class: "text-field" %>
+                    
+                    <%= f.label :email, "Email:" %>
+                    <%= f.email_field :email, class: 'form-control', autofocus: true, class: "text-field" %>
+                    
+                    <%= f.label :phone, "Phone:" %>
+                    <%= f.text_field :phone, class: 'form-control', autofocus: true, class: "text-field" %>
+                    
+                    <%= f.label :address, "Address:" %>
+                    <%= f.text_field :address, class: 'form-control', autocomplete: 'off', class: "text-field" %>
+                    
+                    <%= f.label :founded, "Founded:" %>
+                    <%= f.date_field :founded, class: 'form-control', autofocus: true, class: "text-field" %>
+                    
+                    <%= f.label :company_info, "Company Info:" %>
+                    <%= f.text_area :company_info, class: 'form-control', autocomplete: 'off', class: "text-area"%>
+                    
+                    <div class="bottom-buttons">
+                        <% if employer_signed_in? %>
+                            <%= link_to "Cancel", employerdashboard_path, class: "btn btn-warning cancel-button" %>
+                        <% end %>
+                        
+                        <% if admin_signed_in? %>
+                            <%= link_to "Cancel", admindashboard_path, class: "btn btn-warning cancel-button" %>
+                        <% end %>
+                        <%= f.submit "Save Profile", class: "btn btn-success save-profile-button" %>
+                    </div>
+                    
+                    <%= link_to "Change Password", edit_employer_registration_path, class: "btn btn-default change-password-button" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

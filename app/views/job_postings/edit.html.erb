@@ -1,2 +1,47 @@
-<h1>JobPosting#edit</h1>
-<p>Find me in app/views/job_posting/edit.html.erb</p>
+<% provide(:title, 'Edit Job Posting') %>
+
+<div class="new-job-posting">
+    <%= render 'shared/job_posting_error_messages' %>
+    <div class="form-container">
+        <h2 class="form-title">Edit Job Posting</h2>
+        
+        <div class="job-posting-form">
+            <%= form_for(@job_posting) do |f| %>
+                <%= f.label :position, "Position:" %>
+                <%= f.text_field :position, class: 'form-control' %>
+                
+                <%= f.label :location, "Location:" %>
+                <%= f.text_field :location, class: 'form-control' %>
+                
+                <%= f.label :job_type, "Job Type:" %>
+                <%= f.text_field :job_type, class: 'form-control' %>
+                
+                <%= f.label :pay, "Salary:" %>
+                <%= f.number_field :pay, class: 'form-control' %>
+                
+                <%= f.label :job_description, "Job Description:" %>
+                <%= f.text_area :job_description, class: 'form-control' %>
+                
+                <div class="buttons">
+                    <% if employer_signed_in? %>
+                        <%= link_to "Cancel", employerdashboard_path, class: "btn btn-default" %>
+                    <% end %>
+                    
+                    <% if admin_signed_in? %>
+                        <%= link_to "Cancel", admindashboard_path, class: "btn btn-default" %>
+                    <% end %>
+                
+                    <%= f.submit "Save Job", class: "btn btn-success signup-button" %>
+                    
+                    <% if admin_signed_in? %>
+                        <div class="delete-job-button">
+                            <%= link_to "Delete Job Posting", job_posting_path, :method => :delete, class: "btn btn-danger" %>
+                        </div>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+    

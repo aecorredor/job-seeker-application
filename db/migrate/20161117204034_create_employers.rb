@@ -4,7 +4,6 @@ class CreateEmployers < ActiveRecord::Migration
       t.string :company_name
       t.string :rep_fname
       t.string :rep_lname
-      t.string :email
       t.string :phone
       t.string :address
       t.date :founded

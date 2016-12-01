@@ -1,0 +1,65 @@
+<% 
+    first_name = @seeker.first_name 
+    last_name = @seeker.last_name
+    university = @seeker.university
+    job_postings = @job_postings
+    major = @seeker.major
+%>
+
+<% provide(:title, first_name.capitalize + "'s Dashboard") %>
+<div class="seeker-dashboard-container">
+    <div class="seeker-left-nav">
+        <div class="seeker-image">
+            <%= gravatar_for @seeker %>
+        </div>
+        
+        <div class="seeker-name">
+            <%= "#{first_name.capitalize} #{last_name.capitalize}" %>
+        </div>
+        
+        <div class="seeker-major">
+            <%= major.capitalize unless major.nil? %>
+        </div>
+        
+        <div class="seeker-university">
+            <%= university.capitalize unless university.nil? %>
+        </div>
+        
+        <%= link_to "Edit Profile", edit_seeker_path(@seeker), class: "btn btn-default edit-seeker-button" %>
+        <%= link_to "View Applications", "#", class: "btn btn-default view-applications-button" %>
+        <%= link_to "Log out", destroy_seeker_session_path, :method => :delete, class: "btn btn-default seeker-logout-button" %>
+        
+    </div>
+    
+    <div class="seeker-recommended-jobs">
+        <h1>Jobs You Have Applied For</h1>
+        
+        <% @job_applications.each do |job_application| %>
+            <% @job_postings.each do |posting| %>
+                <% @job_posting = posting if posting.id == job_application.job_posting_id %>
+            <% end %>
+            
+            <% if @job_posting != nil %>          
+              <div class="job-posting">
+                  <div class="first-row">
+                      <div class="title-and-company">
+                          <h1 class="posting-title"><%= @job_posting.position %></h1>
+                          <h4 class="company-and-location"> <%= Employer.find(@job_posting.employer_id).company_name %> | <%= @job_posting.location.upcase %></h4>
+                      </div>
+                      <div class="company-image"><%= gravatar_for Employer.find(@job_posting.employer_id) %></div>
+                  </div>
+                  
+                  <div class="second-row">
+                      <div class="btn job-type"><%= @job_posting.job_type.upcase %></div>
+                  </div>
+                  
+                  <div class="third-row">
+                      <%= @job_posting.job_description %>
+                  </div>
+                  
+                  <%= link_to "Edit Application", edit_job_application_path(job_application), class: 'btn btn-default apply-for-job-button'%>
+              </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>

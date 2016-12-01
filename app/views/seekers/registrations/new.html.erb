@@ -1,0 +1,33 @@
+<% provide(:title, 'Seeker Signup') %>
+
+<div class="signup">
+    <%= render 'shared/seeker_error_messages' %>
+    <div class="form-container">
+        <h2 class="form-title">Sign up</h2>
+        
+        <div class="signup-form">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= f.label :first_name, "First Name:" %>
+                <%= f.text_field :first_name, class: 'form-control', autofocus: true %>
+                
+                <%= f.label :last_name, "Last Name:" %>
+                <%= f.text_field :last_name, class: 'form-control', autofocus: true %>
+                
+                <%= f.label :email, "Email:" %>
+                <%= f.email_field :email, class: 'form-control', autofocus: true %>
+                
+                <%= f.label :password, "Password:" %>
+                <%= f.password_field :password, class: 'form-control', autocomplete: 'off' %>
+                
+                <%= f.label :password_confirmation, "Confirm Password:" %>
+                <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: 'off' %>
+            
+                <%= f.submit "Create Account", class: "btn btn-success signup-button" %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+    
+
+

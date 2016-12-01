@@ -1,2 +1,20 @@
-<h1>JobPosting#index</h1>
-<p>Find me in app/views/job_posting/index.html.erb</p>
+<% provide(:title, 'All Job Postings') %>
+
+<div class="show-title"><h1>Showing All Employers</h1></div>
+<div class="all-container">
+    <% @job_postings.each_with_index do |job_posting, index| %>
+        <div class=<%= "index-item-#{index % 2}" %>>
+            <div class="item-name">
+                <%= job_posting.position %>
+            </div>
+            
+            <div class="item-id">
+                Object ID: <%= job_posting.id %>
+            </div>
+            
+            <div class="item-edit-link">
+                <%= link_to "Edit Data", edit_job_posting_path(job_posting), class: "btn btn-default" %>
+            </div>
+        </div>
+    <% end %>
+</div>

@@ -1,0 +1,38 @@
+<% @employer = Employer.find(@job_posting.employer_id) %>
+
+<% provide(:title, "Apply For Job") %>
+
+<div class="apply-for-job-container">
+    <div class="job-header-container">
+        <div class="company-info-container">
+            <h1 class="company-name"><%= @employer.company_name %></h1>
+            <div class="company-logo">
+                <%= gravatar_for @employer %>
+            </div>
+        </div>
+        
+        <div class="job-main-info-container">
+            <h1 class="job-posting-title"><%= @job_posting.position %></h1>
+            <h4 class="job-posting-location"><%= @job_posting.location %></h4>
+            <div class="btn job-type"><%= @job_posting.job_type.upcase %></div>
+        </div>
+    </div>
+    
+    <div class="job-description-container">
+        <%= @job_posting.job_description %>
+    </div>
+    
+    <div class="cover-letter-container">
+        <%= form_for(@job_application) do |f| %>
+            <%= f.label :cover_letter, "Cover Letter:" %>
+            <%= f.text_area :cover_letter, class: 'form-control' %>
+            
+            <%= f.hidden_field :job_posting_id, :value => @job_posting.id %>
+            
+            <div class="apply-for-job-buttons">
+                <%= link_to "Cancel", seekerdashboard_path, class: "btn btn-warning" %>
+                <%= f.submit "Apply", class: "btn btn-success signup-button" %>
+            </div>
+        <% end %>
+    </div>
+</div>

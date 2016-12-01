@@ -1,2 +1,164 @@
-<h1>Seeker#edit</h1>
-<p>Find me in app/views/seeker/edit.html.erb</p>
+<% provide(:title, "Edit Profile") %>
+
+<% end1 = @seeker.work_experience1_end %>
+<% end2 = @seeker.work_experience2_end %>
+<% end3 = @seeker.work_experience3_end %>
+
+<div class="seeker-dashboard-container">
+    <div class="seeker-left-nav">
+        <div class="seeker-image">
+            <%= gravatar_for @seeker %>
+        </div>
+        
+        <%= link_to "Change Picture", 'https://en.gravatar.com/emails', target: '_blank', class: "btn btn-default edit-seeker-button" %>
+    </div>
+    
+    <div class="update-seeker">
+        <div class="seeker-update-errors">
+            <%= render 'shared/seeker_error_messages' %>
+        </div>
+        <div class="form-container">
+            <div class="update-seeker-form">
+                <%= form_for(@seeker) do |f| %>
+                    <%= f.label :phone, "Phone:" %>
+                    <%= f.text_field :phone, class: 'form-control', autofocus: true, class: "text-field" %>
+                    
+                    
+                    <%= f.label :address, "Address:" %>
+                    <%= f.text_field :address, class: 'form-control', autofocus: true, class: "text-field" %>
+                    
+                    <%= f.label :major, "Major:" %>
+                    <%= f.text_field :major, class: 'form-control', autocomplete: 'off', class: "text-field" %>
+                    
+                    <%= f.label :university, "University:" %>
+                    <%= f.text_field :university, class: 'form-control', autofocus: true, class: "text-field" %>
+                    
+                    <%= f.label :about, "About me:" %>
+                    <%= f.text_area :about, class: 'form-control', autocomplete: 'off', class: "text-area"%>
+                    
+                    <%= f.label :interests, "Interests:" %>
+                    <%= f.text_area :interests, class: 'form-control', autocomplete: 'off', class: "text-area" %>
+                    
+                    <div class="work-experience-container">
+                        <h6>Work Experience 1</h6>
+                        <div class="work-experience-row-1">
+                            <div class="work-title">
+                                <%= f.label :work_experience1_title, "TITLE" %>
+                                <%= f.text_field :work_experience1_title, class: 'form-control', autofocus: true, class: "text-field" %>
+                            </div>
+                            
+                            <div class="company-title">
+                                <%= f.label :work_experience1_company, "COMPANY" %>
+                                <%= f.text_field :work_experience1_company, class: 'form-control', autofocus: true, class: "text-field"%>
+                            </div>
+                        </div>
+                        
+                        <div class="work-experience-row-2">
+                            <div class="start-date">
+                                <%= f.label :work_experience1_start, "START DATE" %>
+                                <%= f.date_field :work_experience1_start, class: 'form-control', autofocus: true, class: "date-field" %>
+                            </div>
+                            
+                            <div class="end-date">
+                                <%= f.label :work_experience1_end, "END DATE" %>
+                                <%= f.date_field :work_experience1_end, class: 'form-control', autofocus: true, class: "date-field" %>
+                                <span class="current-job"><input type="checkbox" name="current-job" value="current-job" <%= 'checked' unless !end1.nil? %>>Current job</span>
+                            </div>
+                        </div>
+                        
+                        <div class="work-experience-row-3">
+                            <%= f.label :work_experience1_description, "DESCRIPTION:" %>
+                            <%= f.text_area :work_experience1_description, class: 'form-control', autofocus: true %>
+                        </div>
+                    </div>
+                    
+                    <div class="work-experience-container">
+                        <h6>Work Experience 2</h6>
+                        <div class="work-experience-row-1">
+                            <div class="work-title">
+                                <%= f.label :work_experience2_title, "TITLE" %>
+                                <%= f.text_field :work_experience2_title, class: 'form-control', autofocus: true, class: "text-field" %>
+                            </div>
+                            
+                            <div class="company-title">
+                                <%= f.label :work_experience2_company, "COMPANY" %>
+                                <%= f.text_field :work_experience2_company, class: 'form-control', autofocus: true, class: "text-field"%>
+                            </div>
+                        </div>
+                        
+                        <div class="work-experience-row-2">
+                            <div class="start-date">
+                                <%= f.label :work_experience2_start, "START DATE" %>
+                                <%= f.date_field :work_experience2_start, class: 'form-control', autofocus: true, class: "date-field" %>
+                            </div>
+                            
+                            <div class="end-date">
+                                <%= f.label :work_experience2_end, "END DATE" %>
+                                <%= f.date_field :work_experience2_end, class: 'form-control', autofocus: true, class: "date-field" %>
+                                <span class="current-job"><input type="checkbox" name="current-job" value="current-job" <%= 'checked' unless !end2.nil? %>>Current job</span>
+                            </div>
+                        </div>
+                        
+                        <div class="work-experience-row-3">
+                            <%= f.label :work_experience2_description, "DESCRIPTION:" %>
+                            <%= f.text_area :work_experience2_description, class: 'form-control', autofocus: true %>
+                        </div>
+                    </div>
+                    
+                    <div class="work-experience-container">
+                        <h6>Work Experience 3</h6>
+                        <div class="work-experience-row-1">
+                            <div class="work-title">
+                                <%= f.label :work_experience3_title, "TITLE" %>
+                                <%= f.text_field :work_experience3_title, class: 'form-control', autofocus: true, class: "text-field" %>
+                            </div>
+                            
+                            <div class="company-title">
+                                <%= f.label :work_experience3_company, "COMPANY" %>
+                                <%= f.text_field :work_experience3_company, class: 'form-control', autofocus: true, class: "text-field"%>
+                            </div>
+                        </div>
+                        
+                        <div class="work-experience-row-2">
+                            <div class="start-date">
+                                <%= f.label :work_experience3_start, "START DATE" %>
+                                <%= f.date_field :work_experience3_start, class: 'form-control', autofocus: true, class: "date-field" %>
+                            </div>
+                            
+                            <div class="end-date">
+                                <%= f.label :work_experience3_end, "END DATE" %>
+                                <%= f.date_field :work_experience3_end, class: 'form-control', autofocus: true, class: "date-field" %>
+                                <span class="current-job"><input type="checkbox" name="current-job" value="current-job" <%= 'checked' unless !end3.nil? %>>Current job</span>
+                            </div>
+                        </div>
+                        
+                        <div class="work-experience-row-3">
+                            <%= f.label :work_experience3_description, "DESCRIPTION:" %>
+                            <%= f.text_area :work_experience3_description, class: 'form-control', autofocus: true %>
+                        </div>
+                    </div>
+                    
+                    <div class="bottom-buttons">
+                        <% if seeker_signed_in? %>
+                            <%= link_to "Cancel", seekerdashboard_path, class: "btn btn-warning cancel-button" %>
+                        <% end %>
+                        
+                        <% if admin_signed_in? %>
+                            <%= link_to "Cancel", admindashboard_path, class: "btn btn-warning cancel-button" %>
+                        <% end %>
+                        
+                        <%= f.submit "Save Profile", class: "btn btn-success save-profile-button" %>
+                        
+                        <% if admin_signed_in? %>
+                            <div class="delete-seeker-button">
+                                <%= link_to "Delete Seeker", seeker_path, :method => :delete, class: "btn btn-danger" %>
+                            </div>
+                        <% end %>
+                    </div>
+                    
+                    <%= link_to "Change Password", edit_seeker_registration_path, class: "btn btn-default change-password-button" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

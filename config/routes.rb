@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
-
-
+  
   root      'pages#home'
   
   get 'signup' => 'pages#signup' #pages does not use crud therefore the routes need to be added here
-
+  get 'employerdashboard' =>'pages#employer_dashboard' #obviously these names suck but hey its a demo
+  get 'seekerdashboard' =>'pages#seeker_dashboard'
+  get 'viewapplicationsdashboard' =>'pages#view_applications_dashboard'
+  get 'admindashboard' =>'pages#admin_dashboard'
+  get 'results' => 'pages#search'
   resources :job_applications
-  resources :admins
-  resources :employers
-  resources :seekers
+  resources :job_postings
+
+  devise_for :admins
+  devise_for :employers
+  devise_for :seekers, controllers: { registrations: 'seekers/registrations'} # this controller is so the user gets redirected to their home page after signing up
+  resources :seekers, only: [:index, :show, :edit, :update, :destroy]
+  resources :employers, only: [:index, :show, :edit, :update, :destroy]
+  resources :admins, only: [:show, :edit, :update, :destroy]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

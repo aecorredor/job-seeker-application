@@ -1,0 +1,29 @@
+<% provide(:title, "Admin Dashboard") %>
+<div class="seeker-dashboard-container">
+    <div class="seeker-left-nav">
+        <div class="seeker-image">
+            <%= gravatar_for @admin %>
+        </div>
+        
+        <div class="seeker-name">
+            <%= @admin.email %>
+        </div>
+        
+        <%= link_to "Edit Profile", edit_admin_path(@admin), class: "btn btn-default edit-seeker-button" %>
+        <%= link_to "Log out", destroy_admin_session_path, :method => :delete, class: "btn btn-default seeker-logout-button" %>
+    </div>
+    
+    <div class="seeker-recommended-jobs">
+        <h1>Admin Actions</h1>
+        
+        <div class="actions-row">
+            <%= link_to "Show Seekers", seekers_path, class: "btn btn-default" %>
+            <%= link_to "Show Employers", employers_path, class: "btn btn-default" %>
+        </div>
+        
+        <div class="actions-row">
+            <%= link_to "Show Job Postings", job_postings_path, class: "btn btn-default" %>
+            <%= link_to "Show Applications", job_applications_path, class: "btn btn-default" %>
+        </div>
+    </div>
+</div>

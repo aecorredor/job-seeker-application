@@ -1,2 +1,20 @@
-<h1>Seeker#index</h1>
-<p>Find me in app/views/seeker/index.html.erb</p>
+<% provide(:title, 'All Seekers') %>
+
+<div class="show-title"><h1>Showing All Employers</h1></div>
+<div class="all-container">
+    <% @seekers.each_with_index do |seeker, index| %>
+        <div class=<%= "index-item-#{index % 2}" %>>
+            <div class="item-name">
+                <%= seeker.first_name %>
+            </div>
+            
+            <div class="item-id">
+                Object ID: <%= seeker.id %>
+            </div>
+            
+            <div class="item-edit-link">
+                <%= link_to "Edit Data", edit_seeker_path(seeker), class: "btn btn-default" %>
+            </div>
+        </div>
+    <% end %>
+</div>

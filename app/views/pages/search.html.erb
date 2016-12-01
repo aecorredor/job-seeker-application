@@ -1,0 +1,111 @@
+<% provide(:title, "Search Results") %>
+
+<% if seeker_signed_in? %>
+    <div class="seeker-recommended-jobs">
+        <h1>Search Results...</h1>
+        
+         <% if @job_postings.empty? %>
+            <h3 class="nothing-found">No results found...</h3>
+        <% end %>
+        
+        <% @job_postings.each do |job_posting| %>
+            <div class="job-posting">
+                <div class="first-row">
+                    <div class="title-and-company">
+                        <h1 class="posting-title"><%= job_posting.position %></h1>
+                        <h4 class="company-and-location"> <%= Employer.find(job_posting.employer_id).company_name %> | <%= job_posting.location.upcase %></h4>
+                    </div>
+                    <div class="company-image"><%= gravatar_for Employer.find(job_posting.employer_id) %></div>
+                </div>
+                
+                <div class="second-row">
+                    <div class="btn job-type"><%= job_posting.job_type.upcase %></div>
+                </div>
+                
+                <div class="third-row">
+                    <%= job_posting.job_description %>
+                </div>
+                
+                <%= link_to "Apply for Job", { :controller => 'job_applications', :action => "new", :job_application => {:job_posting_id => job_posting.id}}, class: 'btn btn-default apply-for-job-button'%>
+            </div>
+        <% end %>
+    </div>
+<% end %>
+
+<% if employer_signed_in? %>
+    <h1 class="people-applied">Search Results...</h1>
+    
+    <% if @seekers.empty? %>
+        <h3 class="nothing-found">No results found...</h3>
+    <% end %>
+ 
+    <div class="all-container">
+        <% @seekers.each_with_index do |seeker, index| %>
+            <div class=<%= "index-item-#{index % 2}" %>>
+                <div class="item-name">
+                    <%= "#{seeker.first_name} #{seeker.last_name}" %>
+                </div>
+                
+                <div class="item-id">
+                    <%= seeker.major %>
+                </div>
+                
+                <div class="item-id">
+                    <%= seeker.university %>
+                </div>
+                
+                <div class="item-edit-link">
+                    <%= link_to "View Profile", seeker_path(seeker), class: "btn btn-default" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>
+
+<% if admin_signed_in? %>
+    <div class="show-title"><h1>Search Results...</h1></div>
+    
+    <% if @seekers.empty? && @employers.empty? %>
+        <h3 class="nothing-found">No results found...</h3>
+    <% end %>
+    
+    <h4 class="found-title">Seekers found:</h4>
+    <div class="all-container">
+        <% @seekers.each_with_index do |seeker, index| %>
+            <div class=<%= "index-item-#{index % 2}" %>>
+                <div class="item-name">
+                    <%= seeker.first_name %> <%= seeker.last_name %>
+                </div>
+                
+                <div class="item-id">
+                    Object ID: <%= seeker.id %>
+                </div>
+                
+                <div class="item-edit-link">
+                    <%= link_to "Edit Data", edit_seeker_path(seeker), class: "btn btn-default" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    
+    <h4 class="found-title">Employers found:</h4>
+    <div class="all-container">
+        <% @employers.each_with_index do |employer, index| %>
+            <div class=<%= "index-item-#{index % 2}" %>>
+                <div class="item-name">
+                    <%= employer.company_name %>
+                </div>
+                
+                <div class="item-id">
+                    Object ID: <%= employer.id %>
+                </div>
+                
+                <div class="item-edit-link">
+                    <%= link_to "Edit Data", edit_employer_path(employer), class: "btn btn-default" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>
+
+

@@ -6,19 +6,18 @@
     font-family: 'Roboto', sans-serif;
 }
 
-
 // HOME PAGE
-
 .navigation-bar {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     border-radius: 0;
+    margin-bottom: 0;
     
     .logo {
         color: #12F500;
         font-size: 1.5em;
-        margin-left: 2%;
+        margin-left: 30px;
         text-decoration: none;
     }
 }
@@ -26,7 +25,7 @@
 .home-container {
     width: 100%;
     margin: 0 auto;
-    margin-top: 20%;
+    margin-top: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,14 +46,13 @@
 }
 
 // GENERAL SIGNUP PAGE
-
 .signup-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     margin: 0 auto;
-    margin-top: 20%;
+    margin-top: 10%;
     
     h1 {
         margin-bottom: 30px;
@@ -65,10 +63,10 @@
     }
 }
 
-// SEEKER SIGNUP
-.seeker-signup {
+// SIGNUP
+.signup {
     width: 100%;
-    margin-top: 20%;
+    margin-top: 10%;
     
     .form-container {
         margin: 0 auto;
@@ -84,7 +82,7 @@
         }
     }
     
-    .seeker-signup-form {
+    .signup-form {
         width: 80%;
         
         form {
@@ -95,7 +93,7 @@
         
         .signup-button {
             margin: 0 auto;
-            width: 40%;   
+            width: 200px;   
             margin-top: 30px;
         }
     }
@@ -111,8 +109,7 @@
     }
 }
 
-// SEEKER ERRORS
-
+// ERRORS
 .error_explanation {
     margin: 0 auto;
     width: 80%;
@@ -123,10 +120,626 @@
     }
 }
 
-// boostrap classes for errors
 .field_with_errors {
   @extend .has-error;
   .form-control {
     color: $state-danger-text;
   }
+}
+
+// SEEKER DASHBOARD
+.seeker-dashboard-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.seeker-left-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D8D8D8;
+    width: 25%;
+    height: 2200px;
+    
+    .seeker-image img {
+        border-radius: 100%;
+        width: 250px;
+        height: 250px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    
+    .seeker-name {
+        font-size: 2em;
+    }
+    
+    .btn {
+        &:first-of-type {
+            margin-top: 15px;
+        }
+        margin-bottom: 15px;
+    }
+}
+
+.seeker-recommended-jobs {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .job-posting {
+        width: 800px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        border: 1px solid gray;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        
+        .first-row {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid gray;
+            padding: 15px;
+            padding-top: 0px;
+            
+            .posting-title {
+                font-size: 1.6em;
+                color: #4B96FF;
+            }
+            
+            .company-and-location {
+                margin-top: 10px;
+                font-size: 1em;    
+            }
+            
+            .company-image {
+                img {
+                    width: 70px;
+                    height: 70px;
+                    background-color: gray;
+                    border-radius: 100%;
+                }
+            }
+        }
+        
+        .second-row {
+            border-bottom: 1px solid gray;
+            padding-bottom: 10px;
+            width: 100%;
+            
+            .job-type {
+                background-color: #FF6DD5;
+                border-radius: 8px;
+                color: white;
+                margin-top: 10px;
+                margin-left: 15px;
+                
+                &:hover {
+                    cursor: auto;
+                }
+            }
+        }
+        
+        .third-row {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .view-description-button {
+            margin-left: 600px;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+// UPDATE SEEKER
+.update-seeker {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 30px;
+    
+    .seeker-update-errors {
+        width: 70%;    
+    }
+    
+    .form-container {
+        width: 70%;
+
+        .text-field {
+            width: 300px;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .text-area {
+            margin-bottom: 15px;
+            display: block;
+            width: 700px;
+            height: 200px;
+        }
+    }
+    
+    .work-experience-container {
+        width: 800px;
+        height: 350px;
+        background-color: #D8D8D8;
+        border: 1px solid gray;
+        margin-bottom: 15px;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        
+        label {
+            font-weight: 300;
+        }
+        
+        h6 {
+            font-size: 1.3em;
+            font-weight: 300;
+            margin-left: 30px;
+            margin-top: 15px;
+        }
+        
+        .work-experience-row-1 {
+            display: flex;
+            justify-content: space-between;
+            
+            .text-field {
+                width: 300px;
+            }
+            
+            .work-title {
+                margin-left: 30px;
+            }
+            
+            .company-title {
+                margin-right: 30px;
+            }
+        }
+        
+        .work-experience-row-2 {
+            display: flex;
+            justify-content: space-between;
+            
+            .start-date {
+                margin-left: 30px;
+            }
+            
+            .end-date {
+                margin-right: 30px;
+            }
+            
+            .date-field {
+                display: block;
+                width: 300px;
+            }
+            
+            .current-job {
+                margin-top: 5px;
+                display: inline-block;
+            }
+        }
+        
+        .work-experience-row-3 {
+            margin-left: 30px;
+            margin-right: 30px;
+            
+            textarea {
+                height: 120px;
+            }
+        }
+    }
+    
+    .bottom-buttons {
+        display: flex;
+        width: 800px;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: 20%;
+        margin-top: 15px;
+        
+        .cancel-button {
+            background-color: #F05704;
+            width: 150px;
+            border: none;
+            margin-right: 30px;
+        }
+        
+        .save-profile-button {
+            background-color: #F05704;
+            width: 150px;
+            border: none;
+        }
+        
+        .delete-seeker-button {
+            margin-top: 100px;
+            margin-left: 150px;
+        }
+    }
+    
+    .change-password-button {
+        margin-left: 660px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+// OTHER
+
+.employer-login-link {
+    margin-top: 15px;
+}
+
+.forgot-password-link {
+    margin-top: 15px;
+}
+
+.alert-info {
+    margin-bottom: 0;
+}
+
+.search-form {
+    margin-left: 80%;
+    float: right;
+    display: flex;
+    align-items: center;
+    
+    input {
+        margin-right: 10px;
+    }
+}
+
+.seeker-major {
+    font-weight: 300;
+}
+
+.seeker-university {
+    font-weight: 300;
+}
+
+.job-buttons {
+    display: flex;
+    margin-left: 500px;
+    
+    .view-applicants-button {
+        margin-right: 15px;
+    }
+}
+
+.update-employer {
+    margin-top: -1300px;
+}
+
+.apply-for-job-button {
+    margin-left: 650px;
+}
+
+.reset-password-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+    margin: 0 auto;
+    border: 1px solid gray;
+    padding: 30px;
+    margin-top: 200px;
+    
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    input {
+        width: 250px;
+    }
+    
+    .field {
+        margin-bottom: 20px;
+    }
+    
+    .actions {
+        .cancel {
+            margin-right: 20px;
+        }
+    }
+}
+
+.new-job-posting {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 100px;
+    
+    .buttons {
+        margin-left: 50%;
+        margin-top: 30px;
+        
+        .btn {
+            width: 200px;
+        }
+        
+        .signup-button {
+            margin-left: 20px;
+        }
+        
+        .delete-job-button {
+            margin-top: 50px;
+            margin-left: 225px;
+        }
+    }
+}
+
+.admin-dashboard {
+    margin-top: -100px;
+}
+
+.actions-row {
+    &:first-of-type {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+    .btn {
+        &:first-of-type {
+            margin-right: 80px;
+        }
+        width: 200px;
+    }
+}
+
+.all-container {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    
+    .index-item-0 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 400px;
+        border: 1px solid gray;
+        padding: 50px;
+        border-radius: 5px;
+        margin-bottom: 60px;
+        
+        .item-name {
+            color: #4B96FF;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .item-id {
+            margin-bottom: 10px;
+        }
+    }
+    
+    .index-item-1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 400px;
+        border: 1px solid gray;
+        padding: 50px;
+        border-radius: 5px;
+        margin-bottom: 60px;
+        
+        .item-name {
+            color: #4B96FF;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .item-id {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.show-title {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.apply-for-job-container {
+    width: 100%;
+    
+    .job-header-container {
+        width: 100%;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: #D8D8D8;
+        
+        .company-info-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 150px;
+            margin-left: 50px;
+            
+            h1 {
+                margin: 0;
+                margin-bottom: 15px;
+                font-weight: 800;
+            }
+            
+            .company-logo img {
+                width: 100px;
+                height: 100px;
+                border-radius: 100%;
+            }
+        }
+        
+        .job-main-info-container {
+            .job-posting-location {
+                font-weight: 300;
+            }
+            
+            .job-type {
+                background-color: #FF6DD5;
+                border-radius: 8px;
+                color: white;
+                font-weight: 400;
+                
+                &:hover {
+                    cursor: auto;
+                }
+            }
+        }
+        
+    }
+    
+    .job-description-container {
+        margin-top: 50px;
+        margin-left: 60px;
+        margin-right: 60px;
+    }
+    
+    .cover-letter-container {
+        margin-left: 60px;
+        margin-right: 60px;
+        margin-top: 70px;
+        
+        .apply-for-job-buttons {
+            margin-top: 20px;
+            margin-left: 85%;
+            width: 100%;
+        }
+    }
+}
+
+.people-applied {
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-left: 400px;
+}
+
+.show-seeker-container {
+    .seeker-main-info {
+        width: 100%;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #D8D8D8;
+        
+        .seeker-picture {
+            margin: 0 auto;
+            
+            img {
+                width: 200px;
+                height: 200px;
+                border-radius: 100%;
+            }
+        }
+        
+        .seeker-name {
+            margin: 0 auto;
+            font-size: 2em;
+            margin-top: 15px;
+        }
+        
+        .seeker-info-item {
+            margin: 0 auto;
+            margin-top: 10px;
+            font-weight: 300;
+            font-size: 1.2em;
+        }
+    }
+    
+    .seeker-full-information {
+        margin-top: 50px;
+        margin-left: 100px;
+        margin-right: 100px;
+        font-size: 1.2em;
+        
+        .seeker-detail {
+            margin-bottom: 10px;
+            
+            .detail-title {
+                color: #4A90E2;
+                font-weight: bold;
+            }
+        }
+    }
+    
+    .seeker-work-experience-container {
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        .seeker-work-experience {
+            width: 700px;
+            height: 200px;
+            border: 2px solid #7ED321;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-bottom: 50px;
+            font-size: 1.2em;
+            padding: 15px;
+            
+            .field {
+                font-weight: bold;
+            }
+            
+            .work-section {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin-top: 10px;
+                margin-left: 15px;
+                margin-right: 15px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid gray;
+                
+                .position {
+                    margin-right: 100px;
+                }
+                
+                .start {
+                    margin-right: 30px;
+                }
+            }
+            
+            .description-container {
+                margin-left: 15px;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+#job_application_cover_letter {
+    height: 400px;
+}
+
+.found-title {
+    margin-left: 400px;
+}
+
+.nothing-found {
+    margin-left: 400px;
 }

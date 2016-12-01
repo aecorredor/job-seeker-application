@@ -1,0 +1,27 @@
+<% provide(:title, 'Employer Sign in') %>
+
+<div class="signup">
+    <div class="form-container">
+        <h2 class="form-title">Sign in</h2>
+        
+        <div class="signup-form">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <%= f.label :email, "First Name:" %>
+                <%= f.text_field :email, class: 'form-control', autofocus: true %>
+                
+                <%= f.label :password, "Password:" %>
+                <%= f.password_field :password, class: 'form-control', autocomplete: 'off' %>
+                
+                <%= f.submit "Log in", class: "btn btn-success signup-button" %>
+                
+            <% end %>
+        </div>
+        <div class="forgot-password-link">
+          <%= link_to "Forgot your password? Click here.", new_password_path(resource_name) %>
+        </div>
+    </div>
+</div>
+
+    
+
+

@@ -8,6 +8,5 @@ class CreateJobPostings < ActiveRecord::Migration
       t.float :pay
       t.timestamps null: false
     end
-
   end
 end

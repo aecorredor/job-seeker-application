@@ -1,2 +1,48 @@
-<h1>JobApplication#edit</h1>
-<p>Find me in app/views/job_application/edit.html.erb</p>
+<% @employer = Employer.find(@job_posting.employer_id) %>
+
+<% provide(:title, "Edit Application") %>
+
+<div class="apply-for-job-container">
+    <div class="job-header-container">
+        <div class="company-info-container">
+            <h1 class="company-name"><%= @employer.company_name %></h1>
+            <div class="company-logo">
+                <%= gravatar_for @employer %>
+            </div>
+        </div>
+        
+        <div class="job-main-info-container">
+            <h1 class="job-posting-title"><%= @job_posting.position %></h1>
+            <h4 class="job-posting-location"><%= @job_posting.location %></h4>
+            <div class="btn job-type"><%= @job_posting.job_type.upcase %></div>
+            <% if admin_signed_in? %>
+                <%= link_to 'Delete Application',  job_application_path(@job_posting), data: { confirm: 'Are you sure?' }, method: :delete , class: "btn btn-danger" %>
+            <% end %>
+        </div>
+    </div>
+    
+    <div class="job-description-container">
+        <%= @job_posting.job_description %>
+    </div>
+    
+    <div class="cover-letter-container">
+        <%= form_for @job_application do |f| %>
+            <%= f.label :cover_letter, "Cover Letter:" %>
+            <%= f.text_area :cover_letter, class: 'form-control' %>
+            
+            <%= f.hidden_field :job_posting_id, :value => @job_posting.id %>
+            
+            <div class="apply-for-job-buttons">
+                <% if seeker_signed_in? %>
+                    <%= link_to "Cancel", seekerdashboard_path, class: "btn btn-warning" %>
+                <% end %>
+                
+                <% if admin_signed_in? %>
+                    <%= link_to "Cancel", admindashboard_path, class: "btn btn-warning" %>
+                <% end %>
+                
+                <%= f.submit "Save Application", class: "btn btn-success signup-button" %>
+            </div>
+        <% end %>
+    </div>
+</div>

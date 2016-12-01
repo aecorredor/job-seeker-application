@@ -1,2 +1,137 @@
-<h1>Seeker#show</h1>
-<p>Find me in app/views/seeker/show.html.erb</p>
+<% provide(:title, @seeker.first_name + "'s Profile") %>
+
+<div class="show-seeker-container">
+    <div class="seeker-main-info">
+        <div class="seeker-picture">
+            <%= gravatar_for @seeker %>
+        </div>
+        
+        <div class="seeker-name">
+            <%= @seeker.first_name %> <%= @seeker.last_name %>
+        </div>
+        
+        <div class="seeker-info-item">
+            <%= @seeker.major %>
+        </div>
+        
+        <div class="seeker-info-item">
+            <%= @seeker.university %>
+        </div>
+    </div>
+
+    <div class="seeker-full-information">
+        <div class="seeker-detail">
+            <span class="detail-title">Email: </span><br> <%= @seeker.email %>
+        </div>
+        
+        <div class="seeker-detail">
+            <span class="detail-title">Phone: </span><br> <%= @seeker.phone %>
+        </div>
+        
+        <div class="seeker-detail">
+            <span class="detail-title">Address: </span><br> <%= @seeker.address %>
+        </div>
+        
+        <div class="seeker-detail">
+            <span class="detail-title">About: </span><br> <%= @seeker.about %>
+        </div>
+        
+        <div class="seeker-detail">
+            <span class="detail-title">Interests: </span><br> <%= @seeker.interests %>
+        </div>
+    </div>
+    
+    <div class="seeker-work-experience-container">
+        <div class="seeker-work-experience">
+            <div class="work-section">
+                <div class="position">
+                    <span class="field">Title: </span><%= @seeker.work_experience1_title %>
+                </div>
+                
+                <div class="company-name">
+                    <span class="field">Company: </span><%= @seeker.work_experience1_company %>
+                </div>
+            </div>
+            
+            <div class="work-section">
+                <div class="start">
+                    <span class="field">From: </span> <%= @seeker.work_experience1_start %>
+                </div>
+                
+                <div class="end">
+                     <span class="field">To: </span> <%= @seeker.work_experience1_end %>
+                </div>
+            </div>
+            
+            <div class="description-container">
+                <div class="field">Description:</div>
+                <p class="description">
+                    <%= @seeker.work_experience1_description[0, 200] + '...' %>
+                </p>
+            </div>
+        </div>
+        
+        <div class="seeker-work-experience">
+            <div class="work-section">
+                <div class="position">
+                    <span class="field">Title: </span><%= @seeker.work_experience2_title %>
+                </div>
+                
+                <div class="company-name">
+                    <span class="field">Company: </span><%= @seeker.work_experience2_company %>
+                </div>
+            </div>
+            
+            <div class="work-section">
+                <div class="start">
+                    <span class="field">From: </span> <%= @seeker.work_experience2_start %>
+                </div>
+                
+                <div class="end">
+                     <span class="field">To: </span> <%= @seeker.work_experience2_end %>
+                </div>
+            </div>
+            
+            <div class="description-container">
+                <div class="field">Description:</div>
+                <p class="description">
+                    <%= @seeker.work_experience2_description[0, 200] + '...' %>
+                </p>
+            </div>
+        </div>
+        
+        <div class="seeker-work-experience">
+            <div class="work-section">
+                <div class="position">
+                    <span class="field">Title: </span><%= @seeker.work_experience2_title %>
+                </div>
+                
+                <div class="company-name">
+                    <span class="field">Company: </span><%= @seeker.work_experience2_company %>
+                </div>
+            </div>
+            
+            <div class="work-section">
+                <div class="start">
+                    <span class="field">From: </span> <%= @seeker.work_experience2_start %>
+                </div>
+                
+                <div class="end">
+                     <span class="field">To: </span> <%= @seeker.work_experience2_end %>
+                </div>
+            </div>
+            
+            <div class="description-container">
+                <div class="field">Description:</div>
+                <p class="description">
+                    <%= @seeker.work_experience2_description[0, 200] + '...' %>
+                </p>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+

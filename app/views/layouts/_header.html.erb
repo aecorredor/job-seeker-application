@@ -1,3 +1,19 @@
 <header class="navbar  navbar-inverse navigation-bar">
-    <%= link_to "Sourcer", root_path, class: "logo" %>
+    <% if seeker_signed_in? %>
+        <%= link_to "Sourcer", seekerdashboard_path, class: "logo" %>
+    <% elsif employer_signed_in? %>
+        <%= link_to "Sourcer", employerdashboard_path, class: "logo" %>
+    <% elsif admin_signed_in? %>
+        <%= link_to "Sourcer", admindashboard_path, class: "logo" %>
+    <% else %>
+        <%= link_to "Sourcer", root_path, class: "logo" %>
+    <% end %>
+    
+    <% if admin_signed_in? || seeker_signed_in? || employer_signed_in? %>
+        <% search_id_attr = :query %>
+        <%= form_tag( results_path, :method => "get", class: "search-form") do %>
+          <%= text_field_tag( search_id_attr ) %>
+          <%= submit_tag("Search", :name => nil ) %>
+        <% end %>
+    <% end %>
 </header>

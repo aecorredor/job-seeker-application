@@ -3,7 +3,22 @@
     <h1>Welcome to <span class="sourcer-title">Sourcer</span></h1>
     <h3>Finding the source of all your dreams.</h3>
     <div>
-        <%= link_to "Log in", '#', class: "btn btn-default login-button" %>
+        <%= link_to "Log in", new_seeker_session_path, class: "btn btn-default login-button" %>
         <%= link_to "Sign up", signup_path, class: "btn btn-default signup-button" %>
     </div>
+    <div class="employer-login-link">
+        <%= link_to "Employer Login", new_employer_session_path, class: "employer-login-link"%>
+    </div>
 </div>
+
+<% if employer_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_employer_session_path, :method => :delete, class: "btn btn-default") %>        
+  </li>
+<% end %>
+
+<% if seeker_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_seeker_session_path, :method => :delete, class: "btn btn-default") %>        
+  </li>
+<% end %>

@@ -69,6 +69,12 @@ GEM
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
+    devise (4.2.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.1)
+      responders
+      warden (~> 1.2.3)
     erubis (2.7.0)
     excon (0.54.0)
     execjs (2.7.0)
@@ -226,7 +232,12 @@ GEM
     multi_json (1.12.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
+    orm_adapter (0.5.0)
     pg (0.19.0)
+    pg_search (1.0.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     puma (3.6.2)
     rack (1.6.5)
     rack-test (0.6.3)
@@ -267,6 +278,8 @@ GEM
       nokogiri (~> 1.5)
       trollop (~> 2.1)
     rdoc (4.3.0)
+    responders (2.3.0)
+      railties (>= 4.2.0, < 5.1)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -298,6 +311,8 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.3)
       execjs (>= 0.3.0, < 3)
+    warden (1.2.6)
+      rack (>= 1.0)
     web-console (2.0.0.beta3)
       activemodel (~> 4.0)
       binding_of_caller (= 0.7.3.pre1)
@@ -316,11 +331,13 @@ DEPENDENCIES
   byebug (= 3.4.0)
   carrierwave (= 0.10.0)
   coffee-rails
+  devise
   fog
   jbuilder
   jquery-rails
   mini_magick
   pg
+  pg_search
   puma
   rails (= 4.2.5)
   rails_12factor

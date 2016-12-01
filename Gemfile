@@ -16,6 +16,8 @@ gem 'turbolinks'
 gem 'jbuilder'                
 gem 'sdoc',                     '0.4.0', group: :doc
 gem 'pg'   
+gem 'devise'
+gem 'pg_search'
 
 group :development, :test do
   gem 'sqlite3',              '1.3.9'

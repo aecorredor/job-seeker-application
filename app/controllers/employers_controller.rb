@@ -1,51 +1,60 @@
 class EmployersController < ApplicationController
-  
-  
   def new
     @employer = Employer.new
   end 
-  
-  def create
-    @employer = Employer.new employer_params
-    if @employer.save
-      flash[:success] = "Account Created"
-      redirect_to root_url
+
+  def edit
+    if employer_signed_in?
+      if Employer.find(params[:id]) == current_employer
+        @employer = Employer.find(params[:id])
+      else 
+        redirect_to employerdashboard_path
+      end
+    elsif admin_signed_in?
+        @employer = Employer.find(params[:id])  
     else
-      render 'new'
+      redirect_to root_path
     end
   end
 
-  def edit
-    @employer = Employer.find_by(params[:id])
-  end
-
   def show
-    @employer = Employer.find_by(params[:id])
+    @employer = Employer.find(params[:id])
   end
 
   def index
-    @employers = Employer.paginate(page: params[:page], per_page: 15).order('created_at ASC')  
+    @employers = Employer.all
   end
 
   def update
-    @employer = Employer.find_by(params[:id])
-    if @employer.update_attributes(employer_params)
-      flash[:success] = "Profile Updated"
-      redirect_to root_url
+    @employer = Employer.find(params[:id])
+    if employer_signed_in?
+      if @employer.update_attributes(employer_params)
+        flash[:success] = "Profile Updated"
+        redirect_to employerdashboard_path
+      end
+    elsif admin_signed_in?
+      if @employer.update_attributes(employer_params)
+        flash[:success] = "Profile Updated"
+        redirect_to admindashboard_path
+      end
     else
-      render "new"
+      if employer_signed_in?
+        render 'new'
+      else
+        redirect_to admindashboard_path
+      end
     end
   end
 
   def destroy
-    Employer.find_by(params[:id]).destroy
+    Employer.find(params[:id]).destroy
     flash[:warning] = "Account Deleted"
-    redirect_to root_url
+    redirect_to admindashboard_path
   end
   
   private
   
     def employer_params
-      params.require(:employer).permit(:company_name, :rep_fname, :rep_lname, :email, :phone, :address, :founded, :company_info)
+      params.require(:employer).permit(:company_name, :rep_fname, :rep_lname, :email, :phone, :address, :founded, :company_info, :password_digest)
     end
 end

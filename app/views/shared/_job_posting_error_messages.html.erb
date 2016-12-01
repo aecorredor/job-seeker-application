@@ -1,0 +1,12 @@
+<% if @job_posting.errors.any? %>
+    <div class="error_explanation">
+        <div class="alert alert-danger">
+            The form contains <%= pluralize(@job_posting.errors.count, "error") %>.
+        </div>
+        <ul>
+            <% @job_posting.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>

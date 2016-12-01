@@ -4,23 +4,21 @@ class AdminsController < ApplicationController
   def new
     @admin = Admin.new
   end 
-  
-  def create
-    @admin = Admin.new admin_params
-    if @admin.save
-      flash[:success] = "Account Created"
-      redirect_to root_url
+
+  def edit
+    if admin_signed_in?
+      if Admin.find(params[:id]) == current_admin
+        @admin = Admin.find(params[:id])
+      else
+        redirect_to admindashboard_path
+      end
     else
-      render 'new'
+      redirect_to root_path
     end
   end
 
-  def edit
-    @admin = Admin.find_by(params[:id])
-  end
-
   def show
-    @admin = Admin.find_by(params[:id])
+    @admin = Admin.find(params[:id])
   end
 
   def index
@@ -28,17 +26,17 @@ class AdminsController < ApplicationController
   end
 
   def update
-    @admin = Admin.find_by(params[:id])
+    @admin = Admin.find(params[:id])
     if @admin.update_attributes(admin_params)
       flash[:success] = "Profile Updated"
-      redirect_to root_url
+      redirect_to admindashboard_path
     else
       render "new"
     end
   end
 
   def destroy
-    Admin.find_by(params[:id]).destroy
+    Admin.find(params[:id]).destroy
     flash[:warning] = "Account Deleted"
     redirect_to root_url
   end
@@ -46,6 +44,6 @@ class AdminsController < ApplicationController
   private
   
     def admin_params
-      params.require(:admin).permit(:first_name, :last_name, :email, :phone, :address, :information)
+      params.require(:admin).permit(:first_name, :last_name, :email, :phone, :address, :information, :password_digest)
     end
 end
