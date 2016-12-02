@@ -1,6 +1,6 @@
 <% provide(:title, 'All Applications') %>
 
-<div class="show-title"><h1>Showing All Applications</h1></div>
+<div class="show-title"><h1>Showing All Job Applications</h1></div>
 <div class="all-container">
     <% @job_applications.each_with_index do |application, index| %>
         <% @seeker = Seeker.find(application.seeker_id) %>
