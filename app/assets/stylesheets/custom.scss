@@ -396,7 +396,8 @@
 }
 
 .search-form {
-    margin-left: 1080px;
+    position: relative;
+    right: 30px;
     float: right;
     display: flex;
     align-items: center;
