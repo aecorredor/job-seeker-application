@@ -9,8 +9,8 @@
 // HOME PAGE
 .navigation-bar {
     display: flex;
-    align-items: center;
     justify-content: flex-start;
+    align-items: center;
     border-radius: 0;
     margin-bottom: 0;
     
@@ -21,6 +21,21 @@
         text-decoration: none;
     }
 }
+
+.search-form {
+    display: flex;
+    align-items: center;
+    flex-basis: auto;
+    
+    input {
+        margin-right: 10px;
+    }
+}
+
+.navigation-bar .search-form:last-child {
+    margin-left: auto;
+}
+
 
 .home-container {
     width: 100%;
@@ -393,18 +408,6 @@
 
 .alert-info {
     margin-bottom: 0;
-}
-
-.search-form {
-    position: relative;
-    right: 30px;
-    float: right;
-    display: flex;
-    align-items: center;
-    
-    input {
-        margin-right: 10px;
-    }
 }
 
 .seeker-major {
